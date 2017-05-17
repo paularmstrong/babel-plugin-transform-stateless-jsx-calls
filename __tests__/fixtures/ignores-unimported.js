@@ -1,0 +1,1 @@
+const ignoresUnimported = <Icon />;

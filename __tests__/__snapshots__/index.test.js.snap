@@ -1,0 +1,423 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`1. converts arrow-function-returns 1`] = `
+"
+import IconSearch from 'icons/IconSearch';
+const Foobar = () => <IconSearch />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _IconSearch = require('icons/IconSearch');
+
+var _IconSearch2 = _interopRequireDefault(_IconSearch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Foobar = function Foobar() {
+  return (0, _IconSearch2.default)();
+};
+"
+`;
+
+exports[`2. converts conditional-expression 1`] = `
+"
+import IconSearch from 'icons/search';
+
+function bar() {
+  return (
+    <div>{ foo ? (<Foo icon={<IconSearch foo={{ bar: true }} />} />) : null }</div>
+  );
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function bar() {
+  return React.createElement(
+    'div',
+    null,
+    foo ? React.createElement(Foo, { icon: (0, _search2.default)({
+        'foo': { bar: true }
+      }) }) : null
+  );
+}
+"
+`;
+
+exports[`3. converts in-jsx-expression-container 1`] = `
+"
+import IconSearch from 'icons/search';
+
+class Component extends React.Component {
+  render() {
+    return (
+      <div>
+        {/* in JSXExpressionContainer */}
+        <Foo icon={<IconSearch />} />
+      </div>
+    );
+  }
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\"); } return call && (typeof call === \\"object\\" || typeof call === \\"function\\") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== \\"function\\" && superClass !== null) { throw new TypeError(\\"Super expression must either be null or a function, not \\" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = function (_React$Component) {
+  _inherits(Component, _React$Component);
+
+  function Component() {
+    _classCallCheck(this, Component);
+
+    return _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).apply(this, arguments));
+  }
+
+  _createClass(Component, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(Foo, { icon: (0, _search2.default)() })
+      );
+    }
+  }]);
+
+  return Component;
+}(React.Component);
+"
+`;
+
+exports[`4. converts jsx-in-ternary-in-jsxexpressioncontainer 1`] = `
+"
+import IconSearch from 'icons/search';
+
+class Component extends React.Component {
+  render() {
+    return (
+      <div>
+        {/* in JSX in ternary in JSXExpressionContainer */}
+        <Foo children={bar ? (<div><IconSearch /></div>) : null} />
+      </div>
+    );
+  }
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\"); } return call && (typeof call === \\"object\\" || typeof call === \\"function\\") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== \\"function\\" && superClass !== null) { throw new TypeError(\\"Super expression must either be null or a function, not \\" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = function (_React$Component) {
+  _inherits(Component, _React$Component);
+
+  function Component() {
+    _classCallCheck(this, Component);
+
+    return _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).apply(this, arguments));
+  }
+
+  _createClass(Component, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(Foo, { children: bar ? React.createElement(
+            'div',
+            null,
+            (0, _search2.default)()
+          ) : null })
+      );
+    }
+  }]);
+
+  return Component;
+}(React.Component);
+"
+`;
+
+exports[`5. converts logical-expression 1`] = `
+"
+import IconSearch from 'icons/search';
+
+const foo = bar && <IconSearch className='icon' />;
+function bar() {
+  return (
+    <div>{isSelected && <IconSearch />}</div>
+  );
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var foo = bar && (0, _search2.default)({
+  'className': 'icon'
+});
+function bar() {
+  return React.createElement(
+    'div',
+    null,
+    isSelected && (0, _search2.default)()
+  );
+}
+"
+`;
+
+exports[`6. converts plain-components 1`] = `
+"
+import IconSearch from 'icons/search';
+
+class Component extends React.Component {
+  render() {
+    return (
+      <div>
+        {/* plain component */}
+        <IconSearch styles={{foo: 'bar'}} className={classNames(styles.icon)} />
+      </div>
+    );
+  }
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\"); } return call && (typeof call === \\"object\\" || typeof call === \\"function\\") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== \\"function\\" && superClass !== null) { throw new TypeError(\\"Super expression must either be null or a function, not \\" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = function (_React$Component) {
+  _inherits(Component, _React$Component);
+
+  function Component() {
+    _classCallCheck(this, Component);
+
+    return _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).apply(this, arguments));
+  }
+
+  _createClass(Component, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        (0, _search2.default)({
+          'styles': { foo: 'bar' },
+          'className': classNames(styles.icon)
+        })
+      );
+    }
+  }]);
+
+  return Component;
+}(React.Component);
+"
+`;
+
+exports[`7. converts plain-function-returns 1`] = `
+"
+import IconSearch from 'icons/IconSearch';
+function asPlainFunction() {
+  return <IconSearch />;
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _IconSearch = require('icons/IconSearch');
+
+var _IconSearch2 = _interopRequireDefault(_IconSearch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asPlainFunction() {
+  return (0, _IconSearch2.default)();
+}
+"
+`;
+
+exports[`8. converts props 1`] = `
+"
+import IconSearch from 'icons/search';
+
+const defaultProps = {
+  // as an object property value
+  objectProperty: <IconSearch />
+};
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultProps = {
+  // as an object property value
+  objectProperty: (0, _search2.default)()
+};
+"
+`;
+
+exports[`9. converts ternary-assignments 1`] = `
+"
+import IconCats from 'icons/cats';
+import IconDogs from 'icons/dogs';
+
+const ternaryAssignment = bar ? <IconCats foo='bar' /> : <IconDogs />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _cats = require('icons/cats');
+
+var _cats2 = _interopRequireDefault(_cats);
+
+var _dogs = require('icons/dogs');
+
+var _dogs2 = _interopRequireDefault(_dogs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ternaryAssignment = bar ? (0, _cats2.default)({
+  'foo': 'bar'
+}) : (0, _dogs2.default)();
+"
+`;
+
+exports[`10. converts variable-assignments 1`] = `
+"
+import IconSearch from 'icons/IconSearch';
+import IconPerson from 'icons/IconPerson';
+import IconCats from 'icons/IconCats';
+
+const asConst = <IconSearch />;
+let asLet = <IconPerson />;
+var asVar = <IconCats />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _IconSearch = require('icons/IconSearch');
+
+var _IconSearch2 = _interopRequireDefault(_IconSearch);
+
+var _IconPerson = require('icons/IconPerson');
+
+var _IconPerson2 = _interopRequireDefault(_IconPerson);
+
+var _IconCats = require('icons/IconCats');
+
+var _IconCats2 = _interopRequireDefault(_IconCats);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var asConst = (0, _IconSearch2.default)();
+var asLet = (0, _IconPerson2.default)();
+var asVar = (0, _IconCats2.default)();
+"
+`;
+
+exports[`11. ignores non-jsx 1`] = `
+"
+import IconSearch from 'icons/search';
+
+const foo = IconSearch({ className: 'icon' });
+function bar() {
+  return (
+    <div>{IconSearch({ className: 'icon' })}</div>
+  );
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var _search = require('icons/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var foo = (0, _search2.default)({ className: 'icon' });
+function bar() {
+  return React.createElement(
+    'div',
+    null,
+    (0, _search2.default)({ className: 'icon' })
+  );
+}
+"
+`;
+
+exports[`12. ignores unimported 1`] = `
+"
+const ignoresUnimported = <Icon />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var ignoresUnimported = React.createElement(Icon, null);
+"
+`;
